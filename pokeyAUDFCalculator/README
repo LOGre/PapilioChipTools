@@ -1,0 +1,5 @@
+Minimalist graphical tool to :
+- Compute the AUDF register value based on the Pokey clock and the note frequency to achieve
+- Compute the note frequency that should be heard based on the Pokey clock and the AUDF register value
+
+that's all :)
