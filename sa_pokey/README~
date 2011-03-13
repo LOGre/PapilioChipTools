@@ -1,0 +1,5 @@
+original sa_pokey.dll project modified by a427 2010
+=> sends pokey registers bytes to external pokey hardware via serial port
+to build it :
+cd src
+make
