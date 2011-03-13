@@ -27,6 +27,9 @@ public class PokeyAUDFCalculatorView extends FrameView {
     private final static String CLOCK64KHZ = "63.9210 kHz";
     private final static String CLOCK15KHZ = "15.6999 kHz";
 
+    private final static int REG8BITSSIZE = 255;
+    private final static int REG16BITSSIZE = 65535;
+
     private final static double CLOCKCPUVAL = 1.78979*1000000;
     private final static double CLOCK64KHZVAL = 63.9210*1000;
     private final static double CLOCK15KHZVAL = 15.6999*1000;
@@ -34,7 +37,7 @@ public class PokeyAUDFCalculatorView extends FrameView {
     private int frequency = 443;
     private int audfregister = 144;
     private double clock = CLOCK64KHZVAL;
-    private int registerSize = 255;
+    private int registerSize = REG8BITSSIZE;
 
     public PokeyAUDFCalculatorView(SingleFrameApplication app) {
         super(app);
@@ -409,7 +412,7 @@ public class PokeyAUDFCalculatorView extends FrameView {
         jRadioButton16bits.setSelected(true);
         jRadioButton8bits.setSelected(false);
 
-        this.registerSize = (2^16)-1;
+        this.registerSize = REG16BITSSIZE;
     }//GEN-LAST:event_jRadioButton16bitsActionPerformed
 
     private void jRadioButton8bitsActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jRadioButton8bitsActionPerformed
@@ -418,7 +421,7 @@ public class PokeyAUDFCalculatorView extends FrameView {
         jRadioButton16bits.setSelected(false);
         jRadioButton8bits.setSelected(true);
 
-        this.registerSize = 255;
+        this.registerSize = REG8BITSSIZE;
 
     }//GEN-LAST:event_jRadioButton8bitsActionPerformed
 
@@ -547,6 +550,7 @@ public class PokeyAUDFCalculatorView extends FrameView {
         try
         {
             int val = Integer.parseInt(svalue);
+            System.out.print(registerSize);
             if(val >= 0 && val <= registerSize) res = true;
         }
         catch(NumberFormatException ex)
