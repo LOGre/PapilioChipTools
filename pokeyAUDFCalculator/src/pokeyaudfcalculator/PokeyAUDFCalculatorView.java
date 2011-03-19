@@ -34,8 +34,8 @@ public class PokeyAUDFCalculatorView extends FrameView {
     private final static double CLOCK64KHZVAL = 63.9210*1000;
     private final static double CLOCK15KHZVAL = 15.6999*1000;
 
-    private int frequency = 443;
-    private int audfregister = 144;
+    private int frequency = 440;
+    private int audfregister = 71;
     private double clock = CLOCK64KHZVAL;
     private int registerSize = REG8BITSSIZE;
 
@@ -119,9 +119,7 @@ public class PokeyAUDFCalculatorView extends FrameView {
     private void initComponents() {
 
         mainPanel = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jComboBoxClock = new javax.swing.JComboBox();
-        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jTextFieldAUDF = new javax.swing.JTextField();
         jTextFieldFreq = new javax.swing.JTextField();
@@ -130,8 +128,11 @@ public class PokeyAUDFCalculatorView extends FrameView {
         jButtonComputeReg = new javax.swing.JButton();
         jRadioButton8bits = new javax.swing.JRadioButton();
         jRadioButton16bits = new javax.swing.JRadioButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabelClock = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         menuBar = new javax.swing.JMenuBar();
-        javax.swing.JMenu fileMenu = new javax.swing.JMenu();
+        javax.swing.JMenu optionsMenu = new javax.swing.JMenu();
         javax.swing.JMenuItem exitMenuItem = new javax.swing.JMenuItem();
         javax.swing.JMenu helpMenu = new javax.swing.JMenu();
         javax.swing.JMenuItem aboutMenuItem = new javax.swing.JMenuItem();
@@ -147,11 +148,6 @@ public class PokeyAUDFCalculatorView extends FrameView {
 
         mainPanel.setName("mainPanel"); // NOI18N
 
-        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(pokeyaudfcalculator.PokeyAUDFCalculatorApp.class).getContext().getResourceMap(PokeyAUDFCalculatorView.class);
-        jLabel1.setIcon(resourceMap.getIcon("jLabel1.icon")); // NOI18N
-        jLabel1.setText(resourceMap.getString("jLabel1.text")); // NOI18N
-        jLabel1.setName("jLabel1"); // NOI18N
-
         jComboBoxClock.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "63.9210 kHz", "15.6999 kHz", "1.78979 MHz" }));
         jComboBoxClock.setName("jComboBoxClock"); // NOI18N
         jComboBoxClock.addActionListener(new java.awt.event.ActionListener() {
@@ -160,13 +156,12 @@ public class PokeyAUDFCalculatorView extends FrameView {
             }
         });
 
-        jLabel2.setText(resourceMap.getString("jLabelClock.text")); // NOI18N
-        jLabel2.setName("jLabelClock"); // NOI18N
-
+        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(pokeyaudfcalculator.PokeyAUDFCalculatorApp.class).getContext().getResourceMap(PokeyAUDFCalculatorView.class);
         jLabel3.setText(resourceMap.getString("jLabel3.text")); // NOI18N
         jLabel3.setName("jLabel3"); // NOI18N
 
         jTextFieldAUDF.setText(resourceMap.getString("jTextFieldAUDF.text")); // NOI18N
+        jTextFieldAUDF.setToolTipText(resourceMap.getString("jTextFieldAUDF.toolTipText")); // NOI18N
         jTextFieldAUDF.setName("jTextFieldAUDF"); // NOI18N
         jTextFieldAUDF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -180,6 +175,7 @@ public class PokeyAUDFCalculatorView extends FrameView {
         });
 
         jTextFieldFreq.setText(resourceMap.getString("jTextFieldFreq.text")); // NOI18N
+        jTextFieldFreq.setToolTipText(resourceMap.getString("jTextFieldFreq.toolTipText")); // NOI18N
         jTextFieldFreq.setName("jTextFieldFreq"); // NOI18N
         jTextFieldFreq.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -196,6 +192,7 @@ public class PokeyAUDFCalculatorView extends FrameView {
         jLabel4.setName("jLabelFreq"); // NOI18N
 
         jButtonComputeFreq.setText(resourceMap.getString("jButtonComputeFreq.text")); // NOI18N
+        jButtonComputeFreq.setToolTipText(resourceMap.getString("jButtonComputeFreq.toolTipText")); // NOI18N
         jButtonComputeFreq.setName("jButtonComputeFreq"); // NOI18N
         jButtonComputeFreq.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -204,6 +201,7 @@ public class PokeyAUDFCalculatorView extends FrameView {
         });
 
         jButtonComputeReg.setText(resourceMap.getString("jButtonComputeReg.text")); // NOI18N
+        jButtonComputeReg.setToolTipText(resourceMap.getString("jButtonComputeReg.toolTipText")); // NOI18N
         jButtonComputeReg.setName("jButtonComputeReg"); // NOI18N
         jButtonComputeReg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -228,6 +226,18 @@ public class PokeyAUDFCalculatorView extends FrameView {
             }
         });
 
+        jLabel1.setIcon(resourceMap.getIcon("jLabel1.icon")); // NOI18N
+        jLabel1.setText(resourceMap.getString("jLabel1.text")); // NOI18N
+        jLabel1.setName("jLabel1"); // NOI18N
+
+        jLabelClock.setText(resourceMap.getString("jLabelClock.text")); // NOI18N
+        jLabelClock.setName("jLabelClock"); // NOI18N
+
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText(resourceMap.getString("jLabel2.text")); // NOI18N
+        jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jLabel2.setName("jLabel2"); // NOI18N
+
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
         mainPanelLayout.setHorizontalGroup(
@@ -236,71 +246,64 @@ public class PokeyAUDFCalculatorView extends FrameView {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jRadioButton16bits)
+                    .addComponent(jRadioButton8bits, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addComponent(jRadioButton16bits)
-                        .addContainerGap())
-                    .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(mainPanelLayout.createSequentialGroup()
-                            .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(mainPanelLayout.createSequentialGroup()
-                                    .addComponent(jLabel2)
-                                    .addGap(46, 46, 46)
-                                    .addComponent(jComboBoxClock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(mainPanelLayout.createSequentialGroup()
-                                    .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel3)
-                                        .addComponent(jLabel4))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jTextFieldFreq, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE)
-                                        .addComponent(jTextFieldAUDF, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE))))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jButtonComputeReg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButtonComputeFreq, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGap(18, 18, 18))
-                        .addGroup(mainPanelLayout.createSequentialGroup()
-                            .addComponent(jRadioButton8bits)
-                            .addContainerGap()))))
+                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabelClock))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextFieldFreq)
+                            .addComponent(jTextFieldAUDF)
+                            .addComponent(jComboBoxClock, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButtonComputeReg, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
+                            .addComponent(jButtonComputeFreq, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE))))
+                .addContainerGap())
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainPanelLayout.createSequentialGroup()
-                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(jComboBoxClock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(jTextFieldAUDF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonComputeFreq))
-                        .addGap(18, 18, 18)
-                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextFieldFreq, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4)
-                            .addComponent(jButtonComputeReg))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jRadioButton8bits)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jRadioButton16bits)))
+                .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
+                .addContainerGap(29, Short.MAX_VALUE)
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabelClock)
+                    .addComponent(jComboBoxClock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextFieldAUDF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonComputeFreq)
+                    .addComponent(jLabel3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jTextFieldFreq, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonComputeReg))
+                .addGap(18, 18, 18)
+                .addComponent(jRadioButton8bits)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jRadioButton16bits)
+                .addGap(20, 20, 20))
         );
 
         menuBar.setName("menuBar"); // NOI18N
 
-        fileMenu.setText(resourceMap.getString("fileMenu.text")); // NOI18N
-        fileMenu.setName("fileMenu"); // NOI18N
+        optionsMenu.setText(resourceMap.getString("optionsMenu.text")); // NOI18N
+        optionsMenu.setName("optionsMenu"); // NOI18N
 
         javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance(pokeyaudfcalculator.PokeyAUDFCalculatorApp.class).getContext().getActionMap(PokeyAUDFCalculatorView.class, this);
         exitMenuItem.setAction(actionMap.get("quit")); // NOI18N
         exitMenuItem.setName("exitMenuItem"); // NOI18N
-        fileMenu.add(exitMenuItem);
+        optionsMenu.add(exitMenuItem);
 
-        menuBar.add(fileMenu);
+        menuBar.add(optionsMenu);
 
         helpMenu.setText(resourceMap.getString("helpMenu.text")); // NOI18N
         helpMenu.setName("helpMenu"); // NOI18N
@@ -329,13 +332,13 @@ public class PokeyAUDFCalculatorView extends FrameView {
         statusPanel.setLayout(statusPanelLayout);
         statusPanelLayout.setHorizontalGroup(
             statusPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(statusPanelSeparator, javax.swing.GroupLayout.DEFAULT_SIZE, 541, Short.MAX_VALUE)
+            .addComponent(statusPanelSeparator, javax.swing.GroupLayout.DEFAULT_SIZE, 575, Short.MAX_VALUE)
             .addGroup(statusPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(statusPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(statusMessageLabel)
                     .addComponent(jLabelStatusMessage))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 216, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 145, Short.MAX_VALUE)
                 .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(statusAnimationLabel)
@@ -369,8 +372,12 @@ public class PokeyAUDFCalculatorView extends FrameView {
         System.out.println("Compute Frequency");
         if(this.audfregister != 0)
         {
-            this.frequency = (int) (this.clock / this.audfregister);
+            // F = C / 2(N+1)
+            this.frequency = (int) (this.clock / (2.0f * (this.audfregister + 1.0f)) );
             jTextFieldFreq.setText(String.valueOf(this.frequency));
+
+            jLabelStatusMessage.setText("Note Frequency : " + frequency + " Hz");
+            jLabelStatusMessage.setForeground(Color.black);
         }
         else
         {
@@ -385,7 +392,7 @@ public class PokeyAUDFCalculatorView extends FrameView {
         System.out.println("Compute Register");
         if(this.frequency != 0)
         {
-            int result = (int) (this.clock / this.frequency);
+            int result = (int) ((this.clock / (2.0f * this.frequency)) - 1.0f );
             if(result > registerSize )
             {
                 jLabelStatusMessage.setText("The register size is too small to handle the result !");
@@ -396,6 +403,9 @@ public class PokeyAUDFCalculatorView extends FrameView {
             {
                 this.audfregister = result;
                 jTextFieldAUDF.setText(String.valueOf(this.audfregister));
+
+                jLabelStatusMessage.setText("Register value => Dec: " + audfregister + " Hex: " + Integer.toHexString(audfregister) + " Bin: " + Integer.toBinaryString(audfregister));
+                jLabelStatusMessage.setForeground(Color.black);
             }
         }
         else
@@ -507,6 +517,7 @@ public class PokeyAUDFCalculatorView extends FrameView {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabelClock;
     private javax.swing.JLabel jLabelStatusMessage;
     private javax.swing.JRadioButton jRadioButton16bits;
     private javax.swing.JRadioButton jRadioButton8bits;
