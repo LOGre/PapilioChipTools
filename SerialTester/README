@@ -1,0 +1,4 @@
+A little java tool to send bytes using the Serial port.
+Used to debug the PapilioChip serial controllers.
+
+Netbeans 6.9 project included.
