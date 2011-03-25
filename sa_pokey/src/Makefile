@@ -1,6 +1,6 @@
 TARGET=sa_pokey.dll
 
-sa_pokey.dll: sa_pokey.o Pokey.o Pokeysnd.o
+sa_pokey.dll: sa_pokey.o Pokey.o Pokeysnd.o rs232.o
 	gcc -shared -o sa_pokey.dll $^
 
 all:	$(TARGET)

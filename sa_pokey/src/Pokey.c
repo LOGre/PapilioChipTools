@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include <inttypes.h>
 
+#include "rs232.h"
+
+
 /* Crippled version for the sa_pokey.dll use only */
 /* #include <stdlib.h> - was here only for rand() ? */
 #ifdef VMS
@@ -156,8 +159,16 @@ int POKEY_siocheck(void)
 #define SOUND_GAIN 2
 #endif /*__PLUS*/
 
+extern int port;
 void Pokey_PutByte(UWORD addr, UBYTE byte)
 {
+	if (addr < 0x10)
+	{
+		SendByte( port, addr);
+		SendByte( port, byte);
+	}
+	return;
+/*
 	extern FILE *fout;
 #define MAXR 256
 	static UBYTE rvalid[MAXR];
@@ -166,6 +177,7 @@ void Pokey_PutByte(UWORD addr, UBYTE byte)
 		fprintf( fout, "%s: addr=%" PRIx16 " byte=%" PRIx8 "\n", __func__, addr, byte);
 	rvalid[addr & 0xff] = 1;
 	rvalue[addr & 0xff] = byte;
+*/
 #ifdef STEREO
 	addr &= stereo_enabled ? 0x1f : 0x0f;
 #else
@@ -316,12 +328,22 @@ void Pokey_PutByte(UWORD addr, UBYTE byte)
 }
 
 FILE *fout = 0;
+#define PORT 1
+#define SPEED 115200
+//#define SPEED 2000000
+int port = PORT;
+int speed = SPEED;
 void Pokey_Initialise(int *argc, char *argv[])
 {
 	int i;
 	int j;
 	ULONG reg;
 
+	if (OpenComport( port, speed))
+	{
+		printf( "couldn't open com port %d speed %d\n", port, speed);
+		exit( 1);
+	}
 	fout = fopen("sa_pokey.out","wt");
 	fprintf( fout, "%s: argc=%d\n", __func__, argc);
 	/*
